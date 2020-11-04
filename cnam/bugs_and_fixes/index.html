@@ -142,7 +142,7 @@ background-color: rgba(0, 0, 0, 0.4);
 
 <div class="error-video-parent">
 <h2 class="video-title">Old implementation</h2>
-<video id="my-player"
+<video id="bug-player"
     class="video-js my-player"
     controls>
     <p class="vjs-no-js">
@@ -157,13 +157,7 @@ background-color: rgba(0, 0, 0, 0.4);
 <hr>
 <div class="fix-video-parent">
 <h2 class="video-title">New implementation</h2>
-<video
-    class="video-js my-player"
-    controls
-    preload="auto"
-    data-setup="{}"
-  >
-    <source src="<?php echo 'videos/fixes/'.$fix_files_arr[$ind]; ?>" type="video/webm" />
+<video id="fix-player" class="video-js my-player" controls>
     <p class="vjs-no-js">
       To view this video please enable JavaScript, and consider upgrading to a
       web browser that
@@ -198,7 +192,7 @@ $ind++;
     cnamXhr.open("GET","config.json");
     cnamXhr.send();
 
-    /*
+    
     let selectElement = document.querySelector("select.videos-select");
     const choicesSelect = new Choices(selectElement);
     choicesSelect.passedElement.element.addEventListener("choice", function(event){
@@ -209,10 +203,12 @@ $ind++;
         selectedVideoSectionElement.classList.remove("video-section-selected");
       }
       let newSelectedVideoSectionElement = document.querySelector(".video-section[data-video-number='"+selectValue+"']");
-      newSelectedVideoSectionElement.classList.add("video-section-selected");
+      if(newSelectedVideoSectionElement){
+        newSelectedVideoSectionElement.classList.add("video-section-selected");
+      }
     });
     choicesSelect.setChoiceByValue("");
-    */
+    
   });
 </script>
 </body>
