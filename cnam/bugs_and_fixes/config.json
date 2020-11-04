@@ -1,0 +1,57 @@
+{
+    "title": "CNAM demos",
+    "data":{
+        "videos":[
+            {   
+                "title":"Modal de signature",
+                "selectTitle": "Example 1",
+                "bug":{
+                    "src": "bugs/1.webm"
+                },
+                "fix":{
+                    "src": "fixes/1.webm"
+                }
+            },
+            {   
+                "title":"Dashboard",
+                "selectTitle": "Example 2",
+                "bug":{
+                    "src": "bugs/2.webm"
+                },
+                "fix":{
+                    "src": "fixes/2.webm"
+                }
+            },
+            {   
+                "title":"Aperçu de signature",
+                "selectTitle": "Example 3",
+                "bug":{
+                    "src": "bugs/3.webm"
+                },
+                "fix":{
+                    "src": "fixes/3.webm"
+                }
+            },
+            {   
+                "title":"Menus de sélection",
+                "selectTitle": "Example 4",
+                "bug":{
+                    "src": "bugs/4.webm"
+                },
+                "fix":{
+                    "src": "fixes/4.webm"
+                }
+            },
+            {   
+                "title":"Formio builder & Sidebar menu",
+                "selectTitle": "Example 5",
+                "bug":{
+                    "src": "bugs/5.webm"
+                },
+                "fix":{
+                    "src": "fixes/5.webm"
+                }
+            }
+        ]
+    }
+}
