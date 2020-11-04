@@ -1,43 +1,3 @@
-<?php 
-$dir_fixes = "videos/fixes";
-$dir_errors = "videos/errors";
-
-$fix_files = scandir($dir_fixes);
-$error_files = scandir($dir_errors);
-
-$fix_files_names_arr = array();
-$error_files_names_arr = array();
-$fix_files_arr = array();
-$error_files_arr = array();
-
-if(sizeof($fix_files)){
-  foreach($fix_files as $file){
-    //echo $file;
-    $filename = explode(".", $file)[0];
-    if(strlen($filename)){
-      $fix_files_names_arr[] = $filename;
-      $fix_files_arr[] = $file;
-    }
-    
-  }
-}
-
-if(sizeof($error_files)){
-  foreach($error_files as $file){
-    //echo $file;
-    $filename = explode(".", $file)[0];
-    if(strlen($filename)){
-      $error_files_names_arr[] = $filename;
-      $error_files_arr[] = $file;
-    }
-  }
-}
-
-/*print_r($fix_files_names_arr);
-print_r($error_files_names_arr);
-
-exit();*/
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -168,39 +128,23 @@ background-color: rgba(0, 0, 0, 0.4);
   <div class="videos-select-parent">
   <select class="videos-select" style="height:100%;min-width:302px;">
     <option value="" selected>--Select example--</option>
-    <?php 
-    foreach($fix_files_names_arr as $fix_file_name){
-    ?>
-    <option value="<?php echo $fix_file_name; ?>"><?php echo "Example ".$fix_file_name; ?></option>
-    <?php
-    }
-    ?>
+    <option value="x">Example X</option>
   </select>
   </div>
   <img src="./images/spark-150.png" class="logo">
 </header>
 
 <div class="content">
-
-<?php 
-$ind = 0;
-foreach($fix_files_names_arr as $fix_file_name){
-?>
-
-<div class="video-section" data-video-number="<?php echo $fix_file_name; ?>">
+<div class="video-section" data-video-number="x">
 
 
 <div class="video-container">
 
 <div class="error-video-parent">
 <h2 class="video-title">Old implementation</h2>
-<video
+<video id="my-player"
     class="video-js my-player"
-    controls
-    preload="auto"
-    data-setup="{}"
-  >
-    <source src="<?php echo 'videos/errors/'.$error_files_arr[$ind]; ?>" type="video/webm" />
+    controls>
     <p class="vjs-no-js">
       To view this video please enable JavaScript, and consider upgrading to a
       web browser that
@@ -243,6 +187,18 @@ $ind++;
 <script src="./scripts/choices.min.js"></script>
 <script>
   window.addEventListener("load", function(){
+    let configJson;
+    let cnamXhr = new XMLHttpRequest();
+    let reqListener = function(){
+      configJson = JSON.parse(this.responseText);
+      console.log("configJson after load = ", configJson);
+
+    }
+    cnamXhr.addEventListener("load", reqListener);
+    cnamXhr.open("GET","config.json");
+    cnamXhr.send();
+
+    /*
     let selectElement = document.querySelector("select.videos-select");
     const choicesSelect = new Choices(selectElement);
     choicesSelect.passedElement.element.addEventListener("choice", function(event){
@@ -256,6 +212,7 @@ $ind++;
       newSelectedVideoSectionElement.classList.add("video-section-selected");
     });
     choicesSelect.setChoiceByValue("");
+    */
   });
 </script>
 </body>
